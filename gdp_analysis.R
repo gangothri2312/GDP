@@ -114,9 +114,20 @@ statewise_gsdp %>%
 #11. 2015-2016 total gsdp
 
 statewise_gsdp %>% 
-  filter(state == "Karnataka", year=="2015-2016") %>% 
-  group_by(state,sector) %>% 
-  summarise(total_gsdp= sum(gsdp, na.rm = T)) ->df
+  filter(state == "Karnataka", year =="2015-16") %>% 
+  group_by(state) %>% 
+  summarise(total_gsdp= sum(gsdp, na.rm = T)) %>% 
+pull(total_gsdp)->dd
+
+###
+statewise_gsdp %>% 
+  filter(state == "karnataka", year =="2015-16") %>% 
+  group_by(sector) %>% 
+  summarise(percent_gsdp =sum(gsdp)/dd*100) %>%
+  arrange(desc(percent_gsdp)) %>% 
+  view()
+  
+  
 
 
 
