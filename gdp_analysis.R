@@ -111,5 +111,13 @@ statewise_gsdp %>%
   group_by(year) %>% 
   summarise(total_gsdp = sum(gsdp, na.rm = T))
 
+#11. 2015-2016 total gsdp
+
+statewise_gsdp %>% 
+  filter(state == "Karnataka", year=="2015-2016") %>% 
+  group_by(state,sector) %>% 
+  summarise(total_gsdp= sum(gsdp, na.rm = T)) ->df
+
+
 
 
